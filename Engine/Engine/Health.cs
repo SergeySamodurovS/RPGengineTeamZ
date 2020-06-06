@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    class Health
+    public class Health
     {
     }
 }
