@@ -6,7 +6,7 @@ namespace Engine
 {
     public class Equipment
     {
-        public enum EquipmentType { Null, Light, Medium, Heavy, VeryHard }
+        public enum EquipmentType { Null, Helmet, Сuirass, Leggings, Gloves }
         public string name;
         public int armor;
         public int cost;

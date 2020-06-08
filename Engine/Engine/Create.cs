@@ -12,17 +12,17 @@ namespace Engine
             switch (name)
             {
                 case 1:
-                    Equipment equipmentLight = new Equipment("Light", 5, 5, Equipment.EquipmentType.Light);
-                    return equipmentLight;
+                    Equipment equipmentHelmet = new Equipment("Helmet", 10, 15, Equipment.EquipmentType.Helmet);//Шлем
+                    return equipmentHelmet;
                 case 2:
-                    Equipment equipmentMedium = new Equipment("Medium", 10, 10, Equipment.EquipmentType.Medium);
-                    return equipmentMedium;
+                    Equipment equipmentСuirass = new Equipment("Сuirass", 15, 20, Equipment.EquipmentType.Сuirass);//Кираса
+                    return equipmentСuirass;
                 case 3:
-                    Equipment equipmentHeavy = new Equipment("Heavy", 15, 15, Equipment.EquipmentType.Heavy);
-                    return equipmentHeavy;
+                    Equipment equipmentLeggings = new Equipment("Heavy", 8, 10, Equipment.EquipmentType.Leggings);//Поножи
+                    return equipmentLeggings;
                 case 4:
-                    Equipment equipmentVeryHard = new Equipment("VeryHard", 20, 20, Equipment.EquipmentType.VeryHard);
-                    return equipmentVeryHard;
+                    Equipment equipmentGloves = new Equipment("VeryHard", 8, 10, Equipment.EquipmentType.Gloves);//Перчатки
+                    return equipmentGloves;
                 case 0:
                     Equipment equipmentNull = new Equipment("Null", 0, 0, Equipment.EquipmentType.Null);
                     return equipmentNull;
