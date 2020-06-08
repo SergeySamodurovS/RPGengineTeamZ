@@ -37,22 +37,22 @@ namespace Engine
             switch (name)
             {
                 case 1:
-                    Weapon weaponBow = new Weapon("Bow", 10, 5, Weapon.WeaponType.Bow);//лук
+                    Weapon weaponBow = new Weapon("Bow", 10, 10, Weapon.WeaponType.Bow);//лук
                     return weaponBow;
                 case 2:
                     Weapon weaponDirk = new Weapon("Dirk", 5, 5, Weapon.WeaponType.Dirk);//кинжал
                     return weaponDirk;
                 case 3:
-                    Weapon weaponFists = new Weapon("Fists", 5, 5, Weapon.WeaponType.Fists);//кулаки
+                    Weapon weaponFists = new Weapon("Fists", 2, 0, Weapon.WeaponType.Fists);//кулаки
                     return weaponFists;
                 case 4:
-                    Weapon weaponStick = new Weapon("Stick", 5, 5, Weapon.WeaponType.Stick);//посох
+                    Weapon weaponStick = new Weapon("Stick",8, 8, Weapon.WeaponType.Stick);//посох
                     return weaponStick;
                 case 0:
-                    Weapon weaponSword = new Weapon("Sword", 5, 5, Weapon.WeaponType.Sword);//меч
+                    Weapon weaponSword = new Weapon("Sword", 12, 12, Weapon.WeaponType.Sword);//меч
                     return weaponSword;
                 default:
-                    Weapon weaponDefault = new Weapon("Fists", 5, 5, Weapon.WeaponType.Fists);//кулаки
+                    Weapon weaponDefault = new Weapon("Fists", 2, 0, Weapon.WeaponType.Fists);//кулаки
                     return weaponDefault;
             }
         }
