@@ -4,16 +4,16 @@ namespace Engine
 {
     public class Hero
     {
-        public string Name { private set; get; }
-        public int Level { private set; get; }
-        public int Experience { private set; get; }
-        public int Damage { private set; get; }
-        public int Balance { private set; get; }
-        public Equipment Equipment { private set; get; }
-        public Weapon Weapon { private set; get; }
-        public int Health { private set; get; }
-        public int Mana { private set; get; }
-        public Magic Magic { private set; get; }
+        public string Name { private set; get; } //Имя
+        public int Level { private set; get; } //Уровень
+        public int Experience { private set; get; } //Опыт
+        public int Damage { private set; get; } //Урон
+        public int Balance { private set; get; } //Монеты
+        public Equipment Equipment { private set; get; } //Экипировка
+        public Weapon Weapon { private set; get; } //Оружие
+        public int Health { private set; get; } //Здоровье
+        public int Mana { private set; get; } //Мана
+        public Magic Magic { private set; get; } //Магия
 
         public Hero(string name)
         {

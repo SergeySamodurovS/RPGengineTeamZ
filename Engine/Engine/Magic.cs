@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Engine
 {
-    public class Magic
+    public abstract class Magic
     {
+        public string name;
     }
 }
