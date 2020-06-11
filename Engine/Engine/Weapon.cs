@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Engine
 {
+    public enum WeaponType { Null, Fists, Sword, Stick, Bow, Dirk }
     public class Weapon
     {
-        public enum WeaponType { Fists, Sword, Stick, Bow, Dirk }
         public string name;
         public int damage;
         public int cost;

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Engine
 {
+    public enum EquipmentType { Null, Helmet, Сuirass, Belt, Leggings, Gloves }
     public class Equipment
     {
-        public enum EquipmentType { Null, Helmet, Сuirass, Leggings, Gloves }
         public string name;
         public int armor;
         public int cost;
