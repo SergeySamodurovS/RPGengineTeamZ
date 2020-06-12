@@ -60,30 +60,30 @@ namespace Engine
                     return weaponNull;
             }
         }
-        public static Magic MakingMagic(TypesOfMagic type)
+        public static Magic MakingMagic(MagicType type)
         {
             switch (type)
             {
-                case TypesOfMagic.Arrow:
-                    Magic magicArrow = new Magic("Arrow", 5, 5, 10, TypesOfMagic.Arrow);  // Стрела
+                case MagicType.Arrow:
+                    Magic magicArrow = new Magic("Arrow", 5, 5, 10, MagicType.Arrow);  // Стрела
                     return magicArrow;
-                case TypesOfMagic.Fireball:
-                    Magic magicFireball = new Magic("Fireball", 7, 7, 15, TypesOfMagic.Fireball);  // Файрбол
+                case MagicType.Fireball:
+                    Magic magicFireball = new Magic("Fireball", 7, 7, 15, MagicType.Fireball);  // Файрбол
                     return magicFireball;
-                case TypesOfMagic.Fist:
-                    Magic magicFist = new Magic("Fist", 2, 2, 5, TypesOfMagic.Fist);  // Кулак
+                case MagicType.Fist:
+                    Magic magicFist = new Magic("Fist", 2, 2, 5, MagicType.Fist);  // Кулак
                     return magicFist;
-                case TypesOfMagic.Lightning:
-                    Magic magicLightning = new Magic("Lightning", 10, 10, 20, TypesOfMagic.Lightning); // Молния
+                case MagicType.Lightning:
+                    Magic magicLightning = new Magic("Lightning", 10, 10, 20, MagicType.Lightning); // Молния
                     return magicLightning;
-                case TypesOfMagic.Rock:
-                    Magic magicRock = new Magic("Rock", 15, 15, 30, TypesOfMagic.Rock); // Камнепад
+                case MagicType.Rock:
+                    Magic magicRock = new Magic("Rock", 15, 15, 30, MagicType.Rock); // Камнепад
                     return magicRock;
-                case TypesOfMagic.Null:
-                    Magic magicNull = new Magic("Null", 0, 0, 0, TypesOfMagic.Null);
+                case MagicType.Null:
+                    Magic magicNull = new Magic("Null", 0, 0, 0, MagicType.Null);
                     return magicNull;
                 default:
-                    magicNull = new Magic("Null", 0, 0, 0, TypesOfMagic.Null);
+                    magicNull = new Magic("Null", 0, 0, 0, MagicType.Null);
                     return magicNull;
             }
         }

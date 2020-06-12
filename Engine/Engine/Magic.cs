@@ -9,17 +9,16 @@ using System.Text;
 
 namespace Engine
 {
-                              
-    public enum TypesOfMagic { Null, Arrow, Lightning, Fist, Fireball, Rock } //Виды магии
+    public enum MagicType { Null, Arrow, Lightning, Fist, Fireball, Rock } //Виды магии
     public class Magic
     {
         public string magicName;
         public int damage;
         public int cost;
         public int manaCost;
-        public TypesOfMagic magicType;
+        public MagicType magicType;
 
-        public Magic(string magicName, int damage, int cost, int manaCost, TypesOfMagic magicType)
+        public Magic(string magicName, int damage, int cost, int manaCost, MagicType magicType)
         {   
             this.magicName = magicName;
             this.damage = damage;
