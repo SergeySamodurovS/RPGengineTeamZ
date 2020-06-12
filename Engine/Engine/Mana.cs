@@ -10,6 +10,7 @@ namespace Engine
         public void PayFor(Mana cost)
         {
             if (cost.Blue > 0) Blue -= cost.Blue;
+
         }
     }
 }

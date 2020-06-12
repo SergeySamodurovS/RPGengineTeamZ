@@ -60,11 +60,32 @@ namespace Engine
                     return weaponNull;
             }
         }
-        /*
-         * public static Magic MakingMagic() //TO-DO Дописать после реализации класса Magic
+        public static Magic MakingMagic(TypesOfMagic type)
         {
-
+            switch (type)
+            {
+                case TypesOfMagic.Arrow:
+                    Magic magicArrow = new Magic("Arrow", 5, 5, 10, TypesOfMagic.Arrow);  // Стрела
+                    return magicArrow;
+                case TypesOfMagic.Fireball:
+                    Magic magicFireball = new Magic("Fireball", 7, 7, 15, TypesOfMagic.Fireball);  // Файрбол
+                    return magicFireball;
+                case TypesOfMagic.Fist:
+                    Magic magicFist = new Magic("Fist", 2, 2, 5, TypesOfMagic.Fist);  // Кулак
+                    return magicFist;
+                case TypesOfMagic.Lightning:
+                    Magic magicLightning = new Magic("Lightning", 10, 10, 20, TypesOfMagic.Lightning); // Молния
+                    return magicLightning;
+                case TypesOfMagic.Rock:
+                    Magic magicRock = new Magic("Rock", 15, 15, 30, TypesOfMagic.Rock); // Камнепад
+                    return magicRock;
+                case TypesOfMagic.Null:
+                    Magic magicNull = new Magic("Null", 0, 0, 0, TypesOfMagic.Null);
+                    return magicNull;
+                default:
+                    magicNull = new Magic("Null", 0, 0, 0, TypesOfMagic.Null);
+                    return magicNull;
+            }
         }
-        */
     }
 }
