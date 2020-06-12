@@ -18,7 +18,6 @@ namespace Engine
         public int Mana { private set; get; } //Мана
         public Magic Magic { private set; get; } //Магия
         public bool IsAlive { set; get; } //Жив ещё
-
         public List<Equipment> equipment; //список экипировки
 
         public Hero(string name)
@@ -27,9 +26,9 @@ namespace Engine
             Level = 1;
             Experience = 0;
             Damage = 10;
-            Health = 100;
-            Mana = 0;
-            Balance = 10;
+            Health = 50;
+            Mana = 50;
+            Balance = 20;
             IsAlive = true;
             equipment = new List<Equipment>();
             Info($"Герой {this.Name} пришёл в этот мир {DateTime.Now}. У Вас есть {this.Health} единиц здоровья, {this.Mana} единиц маны, Вы наносите {this.Damage} единиц урона, Вам выдано {this.Balance} золотых.");
@@ -39,9 +38,9 @@ namespace Engine
         {
             if ((Balance >= purchasedEquipment.cost) && !equipment.Contains(purchasedEquipment))
             {
-                Info?.Invoke($"Вы купили {purchasedEquipment.type} и потратили {purchasedEquipment.cost}");
                 equipment.Add(purchasedEquipment);
                 Balance -= purchasedEquipment.cost;
+                Info?.Invoke($"Вы купили {purchasedEquipment.type} и потратили {purchasedEquipment.cost}");
             }
             else if(Balance < purchasedEquipment.cost)
             {
@@ -55,21 +54,34 @@ namespace Engine
         {
             if (Balance >= purchasedWeapon.cost)
             {
-                Info?.Invoke("Покупка совершена");
                 Weapon = purchasedWeapon;
                 Balance -= purchasedWeapon.cost;
+                Info?.Invoke($"Покупка совершена. Теперь Ваше оружие - {Weapon.type}, у Вас осталось {Balance} золотых.");
             }
             else
             {
                 Info?.Invoke("Средств не достаточно");
             }
         }
-        public void AliveOrDead(int damage) 
+        public void BuyingMagic(Magic purchasedMagic)
+        {
+            if (Balance >= purchasedMagic.cost)
+            {
+                Magic = purchasedMagic;
+                Balance -= purchasedMagic.cost;
+                Info?.Invoke($"Покупка совершена. Теперь Ваша магия - {Magic.magicType}, у Вас осталось {Balance} золотых.");
+            }
+            else
+            {
+                Info?.Invoke("Средств не достаточно");
+            }
+        }
+        public void AliveOrDead(int damage)
         {
             if ((Health - damage) <= 0)
             {
-                Info?.Invoke("Вы мертвы");
                 IsAlive = false;
+                Info?.Invoke("Вы мертвы");
             }
             else 
             {
