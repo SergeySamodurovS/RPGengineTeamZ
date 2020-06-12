@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/itstep-vrn/rpgengineteamz/badge)](https://www.codefactor.io/repository/github/itstep-vrn/rpgengineteamz)
+
 # PRGengineTeamZ
 Учебный репозиторий для создания игры
 
