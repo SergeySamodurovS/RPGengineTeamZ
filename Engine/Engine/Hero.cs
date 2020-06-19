@@ -12,35 +12,42 @@ namespace Engine
         public int Level { private set; get; } //Уровень
         public int Experience { private set; get; } //Опыт
         public int Damage { private set; get; } //Урон
-        public int Balance { private set; get; } //Монеты
+        public int Balance { private set; get; } //Монеты, деньги
         public Weapon Weapon { private set; get; } //Оружие
-        public int Health { private set; get; } //Здоровье
-        public int Mana { private set; get; } //Мана
+        public int MaxHealth { private set; get; } //Максимальный уровень здоровья
+        public int CurrentHealth { private set; get; } //Текущий уровень здоровья
+        public int MaxMana { private set; get; } //Максимальный уровень маны
+        public int CurrentMana { private set; get; } //Текущий уровень маны
         public Magic Magic { private set; get; } //Магия
-        public bool IsAlive { set; get; } //Жив ещё
-        public List<Equipment> equipment; //список экипировки
+        public List<Equipment> equipment; //Список экипировки
 
         public Hero(string name)
         {
             Name = name;
+        }
+        public void NewHero()
+        {
             Level = 1;
             Experience = 0;
             Damage = 10;
-            Health = 50;
-            Mana = 50;
+            MaxHealth = 50;
+            CurrentHealth = 50;
+            MaxMana = 50;
+            CurrentMana = 50;
             Balance = 20;
-            IsAlive = true;
             equipment = new List<Equipment>();
-            Info($"Герой {this.Name} пришёл в этот мир {DateTime.Now}. У Вас есть {this.Health} единиц здоровья, {this.Mana} единиц маны, Вы наносите {this.Damage} единиц урона, Вам выдано {this.Balance} золотых.");
+            equipment.Add(Create.MakingEquipment(EquipmentType.Null));
+            Magic = Create.MakingMagic(MagicType.Null);
+            Weapon = Create.MakingWeapon(WeaponType.Null);
+            Info($"Герой {Name} пришёл в этот мир {DateTime.Now}. У Вас есть {CurrentHealth} единиц здоровья, {CurrentMana} единиц маны, Вы наносите {Damage} единиц урона, Вам выдано {Balance} золотых.");
         }
-        
         public void BuyingEquipment(Equipment purchasedEquipment) 
         {
             if ((Balance >= purchasedEquipment.cost) && !equipment.Contains(purchasedEquipment))
             {
                 equipment.Add(purchasedEquipment);
                 Balance -= purchasedEquipment.cost;
-                Info?.Invoke($"Вы купили {purchasedEquipment.type} и потратили {purchasedEquipment.cost}");
+                Info?.Invoke($"Вы купили {purchasedEquipment.type} и потратили {purchasedEquipment.cost}, у Вас осталось {Balance} золотых.");
             }
             else if(Balance < purchasedEquipment.cost)
             {
@@ -56,7 +63,7 @@ namespace Engine
             {
                 Weapon = purchasedWeapon;
                 Balance -= purchasedWeapon.cost;
-                Info?.Invoke($"Покупка совершена. Теперь Ваше оружие - {Weapon.type}, у Вас осталось {Balance} золотых.");
+                Info?.Invoke($"Покупка совершена. Теперь Ваше оружие - {Weapon.type}, Вы потратили {Weapon.cost}, у Вас осталось {Balance} золотых.");
             }
             else
             {
@@ -69,23 +76,55 @@ namespace Engine
             {
                 Magic = purchasedMagic;
                 Balance -= purchasedMagic.cost;
-                Info?.Invoke($"Покупка совершена. Теперь Ваша магия - {Magic.magicType}, у Вас осталось {Balance} золотых.");
+                Info?.Invoke($"Покупка совершена. Теперь Ваша магия - {Magic.magicType}, Вы потратили {Magic.cost}, у Вас осталось {Balance} золотых.");
             }
             else
             {
                 Info?.Invoke("Средств не достаточно");
             }
         }
-        public void AliveOrDead(int damage)
+        public int DealDamage()
         {
-            if ((Health - damage) <= 0)
+            int dmg = 0;
+            if (CurrentMana >= Magic.manaCost)
             {
-                IsAlive = false;
-                Info?.Invoke("Вы мертвы");
+                dmg = Damage + Weapon.damage + Magic.damage;
+                CurrentMana -= Magic.manaCost;
+                Info?.Invoke($"Герой {Name} наносит {dmg} урона.");
+            }
+            else
+            {
+                dmg = Damage + Weapon.damage;
+            }
+            return dmg;
+        }
+        public int GetInnerDamage(int dmg)
+        {
+            int summaryArmor = 0;
+            foreach (var item in equipment)
+            {
+                summaryArmor += item.armor;
+            }
+            if ((dmg - summaryArmor) > 0)
+            {
+                CurrentHealth -= dmg - summaryArmor;
+                Info?.Invoke($"Герой {Name} блокирует {summaryArmor} урона, осталось {CurrentHealth} единиц здоровья.");
+            }
+            else
+            {
+                Info?.Invoke($"Герой {Name} блокирует {summaryArmor} урона, осталось {CurrentHealth} единиц здоровья.");
+            }
+            return CurrentHealth;
+        }
+        public bool IsAlive()
+        {
+            if (CurrentHealth <= 0)
+            {
+                return false;
             }
             else 
             {
-                Info?.Invoke("Вы ещё живы, продолжайте");
+                return true;
             }
         }
     }
