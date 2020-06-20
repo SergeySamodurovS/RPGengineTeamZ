@@ -127,5 +127,28 @@ namespace Engine
                 return true;
             }
         }
+        public int GetMoney(int money)
+        {
+            Balance += money;
+            return Balance;
+        }
+        public int RestoreHealth(int health)
+        {
+            CurrentHealth += health;
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+            return CurrentHealth;
+        }
+        public int RestoreMana(int mana)
+        {
+            CurrentMana += mana;
+            if (CurrentMana > MaxMana)
+            {
+                CurrentMana = MaxMana;
+            }
+            return CurrentMana;
+        }
     }
 }
